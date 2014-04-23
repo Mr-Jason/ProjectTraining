@@ -22,12 +22,25 @@
 
         <!--TitlePanel 包含应用程序的名称和页标题-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
-            <TextBlock x:Name="ApplicationTitle" Text="我的应用程序" Style="{StaticResource PhoneTextNormalStyle}"/>
-            <TextBlock x:Name="PageTitle" Text="页面名称" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+            <TextBlock Text="简易分级阅读器" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0"/>
+            <TextBlock Text="页面名称" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
         </StackPanel>
 
         <!--ContentPanel - 在此处放置其他内容-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0"></Grid>
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <ScrollViewer Width="auto" Height="auto"  HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <ListBox Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center"  SelectionChanged="lbArticlesList_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="Assets/images/xin4.jpg" HorizontalAlignment="Left" Margin="12,0,12,12" Height="70"/>
+                                <TextBlock Name="tbArticleTitle" VerticalAlignment="Center" Margin="0,0,0,12" Text="{Binding Title}"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </ScrollViewer>
+        </Grid>
     </Grid>
  
 </phone:PhoneApplicationPage>

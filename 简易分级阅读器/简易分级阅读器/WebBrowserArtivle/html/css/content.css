@@ -1,0 +1,52 @@
+﻿body {
+    margin: 0;
+    padding: 0px;
+    -ms-text-size-adjust: none;
+}
+
+header {
+    padding: 0px 0 20px;
+}
+
+.title {
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 30px;
+    color: #454545;
+    margin: 10px 0 20px 0px;
+}
+
+.otherInfo {
+    font-size: 12px;
+    color: #afafaf;
+}
+
+.otherData {
+    margin: 0px 5px 0 5px;
+}
+
+article {
+    margin-top: -15px;
+    line-height: 25px;
+    margin-right: 0px;
+    margin-bottom:50px;
+    font-size: 14px;
+    color: #7c7c7c;
+}
+
+    article div {
+        clear: both;
+        float: right;
+        margin: 10px 2px 5px 5px;
+        overflow: hidden;
+        height: 125px;
+        width: 125px;
+    }
+
+        article div img {
+            border: 0;
+        }
+
+    article p {
+        margin: 0;
+    }

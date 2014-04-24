@@ -37,7 +37,7 @@
     <!--LayoutRoot 是包含所有页面内容的根网格-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
         <!--枢轴控件-->
-        <toolkit:LockablePivot Name="ShowArticlePivot" Title="简易分级阅读器" LoadingPivotItem="ShowArticlePivot_LoadingPivotItem">
+        <toolkit:LockablePivot Name="ShowArticlePivot" Title="简易分级阅读器" LoadingPivotItem="ShowArticlePivot_LoadingPivotItem" SelectionChanged="ShowArticlePivot_SelectionChanged">
             
             <toolkit:LockablePivot.RenderTransform>
                 <CompositeTransform />
@@ -47,8 +47,10 @@
             <controls:PivotItem Header="原文">
                 <Grid>
                     <StackPanel>
-                        <phone:WebBrowser x:Name="ArticleContentWB" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
-
+                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
+                            <toolkit:GestureService.GestureListener>
+                                <toolkit:GestureListener x:Name="TackOverCrossSlip" Flick="TackOverCrossSlip_Flick" />
+                            </toolkit:GestureService.GestureListener>
                         </phone:WebBrowser>
                         <!--<Grid x:Name="LevelSliderPanel">
                             <Grid.RowDefinitions>

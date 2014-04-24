@@ -29,7 +29,8 @@ namespace 简易分级阅读器
         {
             base.OnNavigatedTo(e);
             _articleTitle = NavigationContext.QueryString["Title"];
-            _loadData = XDocument.Load(@"Resources\Articles.xml");
+            _loadData = XDocument.Load("简易分级阅读器;component/Resources/Articles.xml");
+           
         }
 
         private void barIconBtnWordLight_Click(object sender, EventArgs e)
@@ -90,25 +91,44 @@ namespace 简易分级阅读器
 
         private void ShowArticlePivot_LoadingPivotItem(object sender, PivotItemEventArgs e)
         {
-            var data = from query in _loadData.Descendants("Article")
-                       where (string)query.Element("Title") == _articleTitle
-                       select new Article
-                       {
-                           Title = (string)query.Element("Title"),
-                           Content = (string)query.Element("Content")
-                       };
-            Article article = (Article)data.ToList()[0];
-
-            //this.tbArticleTitle.Text = article.Title;
-            //this.tbArticleContent.Text = article.Content;
+            readDataToTemplate();
         }
 
         private void ArticleContentWB_LoadCompleted(object sender, NavigationEventArgs e)
         {
-
+            //防止WebBrowser控件加载过程中的闪烁
+            this.ArticleContentWB.Opacity = 1;
         }
 
         private void ArticleContentWB_ScriptNotify(object sender, NotifyEventArgs e)
+        {
+
+        }
+
+        private void readDataToTemplate()
+        {
+            new ReadArticleHelper().initializationData();// initializationData();
+            //从独立存储中读取资源文件
+            string content = IsolatedStorageHelper.OpenFile(_articleTitle);
+            //从独立存储中读取模板文件
+            string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
+            template = template.Replace("{body}", content);//替换模板内容
+            IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
+            this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.RelativeOrAbsolute));
+           // this.ArticleContentWB.NavigateToString(template);
+        }
+
+        private void TackOverCrossSlip_Flick(object sender, FlickGestureEventArgs e)
+        {
+            //if (this.ShowArticlePivot.IsLocked)
+            //    return;
+            //if (e.Direction == System.Windows.Controls.Orientation.Vertical)
+            //{
+            //    this.ShowArticlePivot.SelectedIndex = 1;
+            //}
+        }
+
+        private void ShowArticlePivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

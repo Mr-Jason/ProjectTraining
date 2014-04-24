@@ -5,6 +5,7 @@ using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Resources;
 
 namespace 简易分级阅读器
 {
@@ -20,7 +21,7 @@ namespace 简易分级阅读器
             using (IsolatedStorageFile iso = IsolatedStorageFile.GetUserStoreForApplication())
             {
                 saveFileUrl = string.IsNullOrWhiteSpace(saveFileUrl) ? sourceFileUrl : saveFileUrl;
-                //if (iso.FileExists(saveFileUrl)) { iso.DeleteFile(saveFileUrl); }
+                if (iso.FileExists(saveFileUrl)) { iso.DeleteFile(saveFileUrl); }//测试需要
                 if (!iso.FileExists(saveFileUrl))
                 {
                     var fullDirectory = System.IO.Path.GetDirectoryName(saveFileUrl);
@@ -29,9 +30,9 @@ namespace 简易分级阅读器
                         iso.CreateDirectory(fullDirectory);
                     }
 
-                    using (Stream input = Application.GetResourceStream(new Uri(sourceFileUrl, UriKind.Relative)).Stream)
+                    using (Stream input = Application.GetResourceStream(new Uri(sourceFileUrl, UriKind.Relative)).Stream) //读取模板文件
                     {
-                        using (IsolatedStorageFileStream output = iso.CreateFile(saveFileUrl))
+                        using (IsolatedStorageFileStream output = iso.CreateFile(saveFileUrl))//在独立存储中复制对应的模板文件
                         {
                             byte[] readBuffer = new byte[4096];
                             int bytesRead = -1;
@@ -44,7 +45,6 @@ namespace 简易分级阅读器
                 }
             }
         }
-
 
 
         /// <summary>

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
+using System.IO;
 
 namespace 简易分级阅读器
 {
@@ -36,9 +37,21 @@ namespace 简易分级阅读器
 
         private void DataBind()
         {
-            XDocument loadData = XDocument.Load(@"Resources\Articles.xml");
+            #region 写法1
+            //Stream stream = Application.GetResourceStream(new Uri("简易分级阅读器;component/Resources/Articles.xml", UriKind.Relative)).Stream;
+            //XDocument xdoc = XDocument.Load(stream);
+            #endregion
 
-            var data = from query in loadData.Descendants("Article")
+            #region 写法2
+            //Uri uri = new Uri("Resources/Articles.xml", UriKind.RelativeOrAbsolute);
+            //StreamResourceInfo sri = Application.GetResourceStream(uri);
+            //Stream stream = sri.Stream;
+            //XDocument xdoc = XDocument.Load(stream);
+            #endregion
+           
+            XDocument loadData = XDocument.Load("简易分级阅读器;component/Resources/Articles.xml");
+
+             var data = from query in loadData.Descendants("Article")
 
                        select new Article
                        {

@@ -4,6 +4,7 @@
     background-color:black;
     color:white;
     -ms-text-size-adjust: none;
+    height:600px;
 }
 
 header {
@@ -33,6 +34,10 @@ article {
     text-wrap:normal;
 }
 
+.highlight {
+ color:yellow;
+ font-weight:bold;
+}
 
 article p {
 margin: 0;

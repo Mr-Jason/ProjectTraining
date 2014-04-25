@@ -12,6 +12,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.Windows.Navigation;
 using System.Xml.Linq;
+using Newtonsoft.Json.Linq;
+using System.Text.RegularExpressions;
 
 namespace 简易分级阅读器
 {
@@ -19,30 +21,34 @@ namespace 简易分级阅读器
     {
         private string _articleTitle;
         private XDocument _loadData;
+        private Article _article;
 
         public ArticleReaderPage()
         {
             InitializeComponent();
+            this.FontSizeSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(FontSizeSlider_ValueChanged);//FontSizeSlider_ValueChanged;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             _articleTitle = NavigationContext.QueryString["Title"];
-            _loadData = XDocument.Load("简易分级阅读器;component/Resources/Articles.xml");
+            //加载文档
+            _loadData = ReadArticleHelper.getArticleResource();
+            var data = from query in _loadData.Descendants("Article")
+                       where (string)query.Element("Title") == _articleTitle
+                       select new Article
+                       {
+                           Translation = (string)query.Element("Translation"),
+                           NewWord = (string)query.Element("NewWord")
+                       };
+            _article = (Article)data.ToList()[0];
            
         }
 
-        private void barIconBtnWordLight_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void barIconBtnFontSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 全屏
+        /// </summary>
         void FullScreenAction()
         {
             if (this.ApplicationBar.IsVisible == false)
@@ -50,12 +56,17 @@ namespace 简易分级阅读器
             this.ShowArticlePivot.Margin = new Thickness(0, -10, 0, 0);
             //this.contentScrollView.Height = System.Windows.Application.Current.Host.Content.ActualHeight-300;
             //this.tbArticleTitle.Margin = new Thickness(0, 12, 0, 12);
+            //this.ArticleContentWB.Height = System.Windows.Application.Current.Host.Content.ActualHeight - 250;
             TitleDispear.Begin();  
             this.ApplicationBar.IsVisible = false;
             this.ShowArticlePivot.IsLocked = true;
+            //this.LevelSliderPanel.Visibility = System.Windows.Visibility.Visible;
             this.BackKeyPress += OnFullScreenBackKeyPress;
         }
 
+        /// <summary>
+        /// 取消全屏
+        /// </summary>
         void StopFullScreenAction()
         {
             if (this.ApplicationBar.IsVisible == true)
@@ -66,45 +77,49 @@ namespace 简易分级阅读器
             //this.tbArticleTitle.Margin = new Thickness(0);
             //this.contentScrollView.Height = System.Windows.Application.Current.Host.Content.ActualHeight - 350;
             this.ShowArticlePivot.IsLocked = false;
+            //this.LevelSliderPanel.Visibility = System.Windows.Visibility.Collapsed;
             this.BackKeyPress -= OnFullScreenBackKeyPress;
         }
 
+        /// <summary>
+        /// 返回键退出全屏
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnFullScreenBackKeyPress(object sender, System.ComponentModel.CancelEventArgs e)
         {
             StopFullScreenAction();
+            this.WordLeavelDialopPopup.IsOpen = false;
+            this.FontSizeDialogPopup.IsOpen = false;
             e.Cancel = true;
         }
 
+        /// <summary>
+        /// 判断手势是否进入全屏状态
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GestureListener_Flick(object sender, FlickGestureEventArgs e)
         {
             if (e.Direction == System.Windows.Controls.Orientation.Horizontal) //判断手势方向  
                 return;
             if (e.VerticalVelocity < 0) //垂直速度判断  
             {
+                //全屏展示
+                if (!this.FontSizeDialogPopup.IsOpen)
+                    this.WordLeavelDialopPopup.IsOpen = true;
                 FullScreenAction();
             }
             else
             {
-                StopFullScreenAction();
-            }  
+                //调用取消全屏方法
+               // StopFullScreenAction();
+            }
         }
 
-        private void ShowArticlePivot_LoadingPivotItem(object sender, PivotItemEventArgs e)
-        {
-            readDataToTemplate();
-        }
-
-        private void ArticleContentWB_LoadCompleted(object sender, NavigationEventArgs e)
-        {
-            //防止WebBrowser控件加载过程中的闪烁
-            this.ArticleContentWB.Opacity = 1;
-        }
-
-        private void ArticleContentWB_ScriptNotify(object sender, NotifyEventArgs e)
-        {
-
-        }
-
+        /// <summary>
+        /// 第一次预览时加载数据
+        /// </summary>
         private void readDataToTemplate()
         {
             new ReadArticleHelper().initializationData();// initializationData();
@@ -114,23 +129,168 @@ namespace 简易分级阅读器
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
-            this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.RelativeOrAbsolute));
-           // this.ArticleContentWB.NavigateToString(template);
+            //这样加载数据
+            this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
+           //也可以这样 this.ArticleContentWB.NavigateToString(template);
         }
 
         private void TackOverCrossSlip_Flick(object sender, FlickGestureEventArgs e)
         {
-            //if (this.ShowArticlePivot.IsLocked)
-            //    return;
-            //if (e.Direction == System.Windows.Controls.Orientation.Vertical)
-            //{
-            //    this.ShowArticlePivot.SelectedIndex = 1;
-            //}
+            if (this.ShowArticlePivot.IsLocked)
+                return;
+            if (e.Direction == System.Windows.Controls.Orientation.Horizontal)
+            {
+                this.ShowArticlePivot.SelectedIndex = 1;
+            }
+        }
+
+        #region Pivot Event
+        private void ShowArticlePivot_LoadingPivotItem(object sender, PivotItemEventArgs e)
+        {
+            //防止因为Pivot切换时重复加载数据
+            if (this.ArticleContentWB.Source == null)
+                readDataToTemplate();
         }
 
         private void ShowArticlePivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int itemIndex = 0;
+            itemIndex = ((Microsoft.Phone.Controls.Pivot)(sender)).SelectedIndex;
 
+            if (itemIndex == 0)
+            {
+                this.ApplicationBar.IsVisible = true;
+                return;
+            }
+            this.ApplicationBar.IsVisible = false;
+
+            if (itemIndex == 1)
+            {
+                this.tbTranslation.Text = this._article.Translation;
+            }
+            if (itemIndex == 2)
+            {
+                this.tbNewWords.Text = this._article.NewWord;
+            }
+        }
+        #endregion
+
+        #region WebBrowser Event
+        /// <summary>
+        /// 在LoadCompleted事件中编写调用js初始化方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ArticleContentWB_LoadCompleted(object sender, NavigationEventArgs e)
+        {
+            //防止WebBrowser控件加载过程中的闪烁
+            this.ArticleContentWB.Opacity = 1;
+            //调用js方法（在这里是调用js初始化方法）
+            // this.ArticleContentWB.InvokeScript("Js_Method_Name");
+        }
+
+        /// <summary>
+        /// 在ScriptNotify事件中可监听javascript，脚本中通过window.external.notify触发ScriptNotify事件
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ArticleContentWB_ScriptNotify(object sender, NotifyEventArgs e)
+        {
+            //页面传递的参数
+            string param = e.Value;
+            //判断参数是否为空
+            if (string.IsNullOrWhiteSpace(param))
+                return;
+            //将字符串转化为json对象
+            JObject jObject = JObject.Parse(param);
+
+        }
+
+        private void ArticleContentWB_Loaded(object sender, RoutedEventArgs e)
+        {
+            var border = this.ArticleContentWB.Descendants<Border>().Last() as Border;
+           // border.ManipulationDelta += Border_ManipulationDelta;
+           // border.ManipulationCompleted += Border_ManipulationCompleted;
+        }
+        #endregion
+
+        #region ApplicationBar Button Event
+        private void barIconBtnWordLight_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Regex r = new Regex(@"\w+[^\w+\.]");
+                MatchCollection words = r.Matches(this._article.NewWord);
+    
+                var wordList = new List<string>();
+               
+                for (int i = 0; i < words.Count; i++)
+                {
+                    wordList.Add(words[i].Value);
+                   // this.ArticleContentWB.InvokeScript("highLightWord", new string[]{words[i].Value});
+                }
+                string[] wordStr = wordList.ToArray();
+
+                //this.ArticleContentWB.InvokeScript("light");
+            }
+            catch (Exception se)
+            {
+                MessageBox.Show("Excute JavaScript Have Exception:" + se.Message);
+            }
+        }
+
+        private void barIconBtnFontSize_Click(object sender, EventArgs e)
+        {
+            FontSizeDialogPopup.IsOpen = true;
+            FullScreenAction();
+        }
+        #endregion
+
+        #region 阻止拖动
+        private void Border_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+        {
+            if (e.FinalVelocities.ExpansionVelocity.X != 0.0 ||
+                e.FinalVelocities.ExpansionVelocity.Y != 0.0)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Border_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
+        {
+            if (e.DeltaManipulation.Scale.X != 0.0 ||
+                e.DeltaManipulation.Scale.Y != 0.0)
+            {
+                e.Handled = true;
+            }
+            if (true)
+            {
+                if (e.DeltaManipulation.Translation.X != 0.0 ||
+                  e.DeltaManipulation.Translation.Y != 0.0)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+        #endregion
+
+        private void Levelslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+
+        }
+
+        private void FontSizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            object fontSize = Math.Round(e.NewValue);
+            string[] str = {fontSize.ToString()};
+            try
+            {
+                this.ArticleContentWB.InvokeScript("changeFontSize", str);
+            }
+            catch (Exception se)
+            {
+                MessageBox.Show("Excute JavaScript Have Exception:" + se.Message);
+            }
         }
     }
 }

@@ -7,6 +7,7 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:简易分级阅读器"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
     mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
@@ -16,8 +17,9 @@
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
+        <local:TruncationConverter x:Key="truncate"/>
         <Storyboard x:Name="TitleDispear">
-            <DoubleAnimation Duration="0:0:1" To="-158" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"  
+            <DoubleAnimation Duration="0:0:1" To="-120" Storyboard.TargetProperty="(UIElement.RenderTransform).(CompositeTransform.TranslateY)"  
             Storyboard.TargetName="ShowArticlePivot" d:IsOptimized="True">
                 <DoubleAnimation.EasingFunction>
                     <CubicEase EasingMode="EaseOut" />
@@ -46,27 +48,81 @@
             <!--枢轴项一-->
             <controls:PivotItem Header="原文">
                 <Grid>
-                    <StackPanel>
-                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Height="auto" Grid.Row="0">
+                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" Loaded="ArticleContentWB_Loaded" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
                             <toolkit:GestureService.GestureListener>
                                 <toolkit:GestureListener x:Name="TackOverCrossSlip" Flick="TackOverCrossSlip_Flick" />
                             </toolkit:GestureService.GestureListener>
                         </phone:WebBrowser>
-                        <!--<Grid x:Name="LevelSliderPanel">
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Slider Name="Levelslider" Foreground="LightBlue" Grid.ColumnSpan="3" Grid.Row="0" Width="422" Maximum="5" Minimum="0"/>
-                            <TextBlock Name="tbLevelValue" Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" Margin="30,-50,0,0">0</TextBlock>
-                            <TextBlock Name="tbMaxLevel" Grid.Column="2" Grid.Row="1" Margin="80,-50,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">5</TextBlock>
-                        </Grid>-->
                     </StackPanel>
+                    <Grid x:Name="FontPanel" Grid.Row="1">
+                        <Popup Name="FontSizeDialogPopup" VerticalAlignment="Center">
+                            <StackPanel>
+                                <TextBlock FontSize="20" Margin="12,12,0,0" Text="调整字体大小"></TextBlock>
+                                <Grid x:Name="FontSizePanel">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="FontSizeSlider" Width="450" 
+                                            Grid.ColumnSpan="3" Grid.Row="0" 
+                                            Minimum="18" Maximum="40" 
+                                            SmallChange="1" 
+                                            Value="18"/>
+                                    <TextBlock Name="tbFontSizeValue" Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" Margin="12,-50,0,0">
+                                        <TextBlock.Text>
+                                            <Binding ElementName="FontSizeSlider"  Path="Value">
+                                            <Binding.Converter>
+                                                <local:TruncationConverter />
+                                            </Binding.Converter>
+                                            </Binding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Name="tbMaxSize" Grid.Column="2" Grid.Row="1" Margin="0,-50,10,0" TextAlignment="Right" VerticalAlignment="Center" >40</TextBlock>
+                                </Grid>
+                            </StackPanel>
+                        </Popup>
+                        <Popup Name="WordLeavelDialopPopup">
+                            <StackPanel>
+                                <TextBlock FontSize="20" Margin="12,12,0,0" Text="高亮文中不同等级的单词"></TextBlock>
+                                <Grid x:Name="LevelSliderPanel">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Slider Name="Levelslider" Foreground="LightBlue" Width="450"
+                                        Grid.ColumnSpan="3" Grid.Row="0"  
+                                        Maximum="5" Minimum="0" 
+                                        SmallChange="1" 
+                                        ValueChanged="Levelslider_ValueChanged"/>
+                                    <TextBlock Name="tbLevelValue" Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" Margin="12,-50,0,0">
+                                        <TextBlock.Text>
+                                            <Binding ElementName="Levelslider"  Path="Value">
+                                                <Binding.Converter>
+                                                    <local:TruncationConverter />
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </TextBlock.Text>
+                                    </TextBlock>
+                                    <TextBlock Name="tbMaxLevel" Grid.Column="2" Grid.Row="1" Margin="0,-50,10,0" TextAlignment="Right" VerticalAlignment="Center" >5</TextBlock>
+                                </Grid>
+                            </StackPanel>
+                        </Popup>
+                    </Grid>
                 </Grid>
                 <toolkit:GestureService.GestureListener>
                     <toolkit:GestureListener Flick="GestureListener_Flick"/>
@@ -76,9 +132,11 @@
             <!--枢轴项二-->
             <controls:PivotItem Header="译文">
                 <Grid>
-                    <phone:WebBrowser>
-
-                    </phone:WebBrowser>
+                    <StackPanel>
+                        <ScrollViewer Height="650" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                            <TextBlock Name="tbTranslation" Margin="15,0,15,0" TextWrapping="Wrap"/>
+                        </ScrollViewer>
+                    </StackPanel>
                 </Grid>
             </controls:PivotItem>
 
@@ -97,7 +155,7 @@
     
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar Opacity="0.6">
-            <shell:ApplicationBarIconButton x:Name="barIconBtnFontSize" Text="字体大小" IconUri="Assets/images/appbar.edit.rest.png" Click="barIconBtnFontSize_Click"/>
+            <shell:ApplicationBarIconButton x:Name="barIconBtnFontSize" Text="字体大小" IconUri="Assets/images/appbar.font.rest.png" Click="barIconBtnFontSize_Click"/>
             <shell:ApplicationBarIconButton x:Name="barIconBtnWordLight" Text="点亮生词" IconUri="Assets/images/appbar.light.rest.png" Click="barIconBtnWordLight_Click"/>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>

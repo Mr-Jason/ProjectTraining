@@ -67,6 +67,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TruncationConverter.cs" />
+    <Compile Include="VisualTreeAdapter.cs" />
     <Compile Include="WebBrowserArtivle\html\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
@@ -106,6 +108,7 @@
     </Content>
     <Resource Include="Resources\Articles.xml" />
     <Content Include="Assets\images\appbar.edit.rest.png" />
+    <Content Include="Assets\images\appbar.font.rest.png" />
     <Content Include="Assets\images\appbar.light.rest.png" />
     <Content Include="Assets\images\xin4.jpg" />
     <Content Include="Background.png">
@@ -114,8 +117,8 @@
     <Content Include="SplashScreenImage.jpg" />
     <Resource Include="WebBrowserArtivle\html\content_template.html" />
     <Resource Include="WebBrowserArtivle\html\css\content.css" />
-    <Content Include="WebBrowserArtivle\html\js\content.js" />
-    <Content Include="WebBrowserArtivle\html\js\jquery-1.11.0.js" />
+    <Resource Include="WebBrowserArtivle\html\js\content.js" />
+    <Resource Include="WebBrowserArtivle\html\js\jquery-1.11.0.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Themes\" />

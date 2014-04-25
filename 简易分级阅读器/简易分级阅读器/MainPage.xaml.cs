@@ -34,7 +34,9 @@ namespace 简易分级阅读器
         //    }
         //}
 
-
+        /// <summary>
+        /// 加载文章列表
+        /// </summary>
         private void DataBind()
         {
             #region 写法1
@@ -48,8 +50,8 @@ namespace 简易分级阅读器
             //Stream stream = sri.Stream;
             //XDocument xdoc = XDocument.Load(stream);
             #endregion
-           
-            XDocument loadData = XDocument.Load("简易分级阅读器;component/Resources/Articles.xml");
+
+            XDocument loadData = ReadArticleHelper.getArticleResource();
 
              var data = from query in loadData.Descendants("Article")
 
@@ -66,7 +68,8 @@ namespace 简易分级阅读器
             Article selectedItem = (Article)lbArticlesList.SelectedItem;
             if (selectedItem != null)
             {
-                NavigationService.Navigate(new Uri("/ArticleReaderPage.xaml?Title=" + selectedItem.Title, UriKind.Relative));
+                string strTitle = selectedItem.Title.ToString().TrimStart().TrimEnd();
+                NavigationService.Navigate(new Uri("/ArticleReaderPage.xaml?Title=" + strTitle, UriKind.Relative));
             }
         }
     }

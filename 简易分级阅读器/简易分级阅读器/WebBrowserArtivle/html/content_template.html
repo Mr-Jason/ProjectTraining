@@ -6,6 +6,31 @@
     <meta content="width=device-width,user-scalable=no" name="viewport">
     <link href="css/content.css" rel="stylesheet" />
     <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
+    <script type="text/javascript">
+        var arrayObj = new Array();
+        function changeFontSize(sizeValue) {
+            $("article").css("font-size", Math.round(sizeValue));
+        }
+
+        function highLightWord(wordList) {
+            arrayObj.unshift(wordList + "|");
+        }
+
+        function light()
+        {
+            var key = arrayObj.split('|');
+            for (var i = 0; i < key.length; i++)
+            {
+                var regExp = new RegExp(key[i], 'g');
+                $(".content").each(function () {
+                    var html = $(this).html();
+                    var newHtml = html.replace(regExp, '<span class="highlight">' + key[i] + '</span>');//将找到的关键字替换，加上highlight属性；
+
+                    $(this).html(newHtml);
+                });
+            }
+        }
+    </script>
 </head>
 <body>
     <article>

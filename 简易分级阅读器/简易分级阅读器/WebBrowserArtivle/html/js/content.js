@@ -1,3 +1,3 @@
-﻿function changeFontSize(sizeValue) {
-    $("article").css("font-size", sizeValue);
-}
+﻿//function changeFontSize(sizeValue) {
+//    $("article").css("font-size", Math.round(sizeValue));
+//}

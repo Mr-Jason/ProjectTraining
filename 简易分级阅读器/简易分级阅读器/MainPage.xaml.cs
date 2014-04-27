@@ -65,11 +65,18 @@ namespace 简易分级阅读器
 
         private void lbArticlesList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            int selectedIndex = this.lbArticlesList.SelectedIndex;
+            if (selectedIndex == -1)
+            {
+                return;
+            }
+            
             Article selectedItem = (Article)lbArticlesList.SelectedItem;
             if (selectedItem != null)
             {
                 string strTitle = selectedItem.Title.ToString().TrimStart().TrimEnd();
                 NavigationService.Navigate(new Uri("/ArticleReaderPage.xaml?Title=" + strTitle, UriKind.Relative));
+                this.lbArticlesList.SelectedIndex = -1;
             }
         }
     }

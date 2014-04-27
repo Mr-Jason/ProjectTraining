@@ -106,7 +106,9 @@
     <Content Include="ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\Articles.xml" />
+    <Resource Include="Resources\Articles.xml">
+      <SubType>Designer</SubType>
+    </Resource>
     <Content Include="Assets\images\appbar.edit.rest.png" />
     <Content Include="Assets\images\appbar.font.rest.png" />
     <Content Include="Assets\images\appbar.light.rest.png" />

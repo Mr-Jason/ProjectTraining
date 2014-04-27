@@ -219,17 +219,17 @@ namespace 简易分级阅读器
         {
             try
             {
-                Regex r = new Regex(@"\w+[^\w+\.]");
-                MatchCollection words = r.Matches(this._article.NewWord);
+               // Regex r = new Regex(@"\w+[^\w+\.]");
+                //MatchCollection words = r.Matches(this._article.NewWord);
     
-                var wordList = new List<string>();
+               // var wordList = new List<string>();
                
-                for (int i = 0; i < words.Count; i++)
-                {
-                    wordList.Add(words[i].Value);
-                   // this.ArticleContentWB.InvokeScript("highLightWord", new string[]{words[i].Value});
-                }
-                string[] wordStr = wordList.ToArray();
+               // for (int i = 0; i < words.Count; i++)
+                // {highLightWord
+               //     wordList.Add(words[i].Value);
+                    this.ArticleContentWB.InvokeScript("highLightWord", new string[]{this._article.NewWord});
+              //  }
+                //string[] wordStr = wordList.ToArray();
 
                 //this.ArticleContentWB.InvokeScript("light");
             }

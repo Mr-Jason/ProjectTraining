@@ -7,29 +7,28 @@
     <link href="css/content.css" rel="stylesheet" />
     <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript">
-        var arrayObj = new Array();
         function changeFontSize(sizeValue) {
             $("article").css("font-size", Math.round(sizeValue));
         }
 
-        function highLightWord(wordList) {
-            arrayObj.unshift(wordList + "|");
-        }
+        function highLightWord(words) {
+            var c = new RegExp("\\w+[^\\w+\\.]", "g");
 
-        function light()
-        {
-            var key = arrayObj.split('|');
-            for (var i = 0; i < key.length; i++)
-            {
-                var regExp = new RegExp(key[i], 'g');
+            var arrMactches = words.match(c);
+            for (var i = 0; i < arrMactches.length ; i++) {
+                var regExp = new RegExp(arrMactches[i].trim().replace(/[(|)]/g,""),'g');
                 $(".content").each(function () {
                     var html = $(this).html();
-                    var newHtml = html.replace(regExp, '<span class="highlight">' + key[i] + '</span>');//将找到的关键字替换，加上highlight属性；
-
-                    $(this).html(newHtml);
+                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
+                    $('.content').html(newHtml);
                 });
             }
         }
+
+        String.prototype.trim = function () {
+            return this.replace(/(^\s*)|(\s*$)/g, "");
+        }
+
     </script>
 </head>
 <body>

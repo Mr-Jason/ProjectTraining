@@ -27,10 +27,10 @@
         </StackPanel>
 
         <!--ContentPanel - 在此处放置其他内容-->
-        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,12">
-            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,10">
+            <ScrollViewer  Height="auto" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
                 <StackPanel>
-                    <ListBox Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center"  SelectionChanged="lbArticlesList_SelectionChanged">
+                    <ListBox Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center" SelectionChanged="lbArticlesList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">

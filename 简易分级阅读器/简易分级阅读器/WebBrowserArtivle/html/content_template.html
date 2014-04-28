@@ -31,13 +31,34 @@
                     });
                 }
             }else{
-                    //清除高亮效果
-                    $("span[class='highlight']").each(function () {
-                    var text = document.createTextNode($(this).text());
-                    $(this).replaceWith($(text));
-                });
-                markLight = true;
+                clearHightLight();
             }
+        }
+
+        function highLightLevelWord(words) {
+
+            clearHightLight();
+
+            var arrMactches = words.split('|');
+
+            for (var i = 0; i < arrMactches.length-1; i++) {
+                $(".content").each(function () {
+                    var regExp = new RegExp(arrMactches[i].trim(), 'g');
+                    var html = $(this).html();
+                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i] + '</span>');//将找到的关键字替换，加上highlight属性；
+                    $('.content').html(newHtml);
+                });
+            }
+        }
+
+        function clearHightLight()
+        {
+            //清除高亮效果
+            $("span[class='highlight']").each(function () {
+                var text = document.createTextNode($(this).text());
+                $(this).replaceWith($(text));
+            });
+            markLight = true;
         }
         
         //添加去除空格方法

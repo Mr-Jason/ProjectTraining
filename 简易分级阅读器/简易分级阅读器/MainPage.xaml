@@ -33,7 +33,7 @@
                     <ListBox Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center" SelectionChanged="lbArticlesList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
+                                <StackPanel Orientation="Horizontal" Height="85">
                                     <Image Source="Assets/images/xin4.jpg" HorizontalAlignment="Left" Margin="12,0,12,12" Height="70"/>
                                     <TextBlock Name="tbArticleTitle" VerticalAlignment="Center" Margin="0,0,0,12" Text="{Binding Title}"/>
                                 </StackPanel>
@@ -41,9 +41,7 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </StackPanel>
-            </ScrollViewer>
-            
+            </ScrollViewer>  
         </Grid>
     </Grid>
- 
 </phone:PhoneApplicationPage>

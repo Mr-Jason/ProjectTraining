@@ -57,6 +57,15 @@ namespace 简易分级阅读器
                 PhoneApplicationService.Current.UserIdleDetectionMode = IdleDetectionMode.Disabled;
             }
 
+            #region 创建数据库
+            using (localDataBaseHelper db = new localDataBaseHelper())
+            {
+                if (db.DatabaseExists() == false)
+                {
+                    db.CreateDatabase();
+                }
+            }
+            #endregion
         }
 
         // 应用程序启动(例如，从“开始”菜单启动)时执行的代码

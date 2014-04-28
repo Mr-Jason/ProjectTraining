@@ -14,6 +14,7 @@
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.Opacity="0.5"
     shell:SystemTray.IsVisible="True">
 
     <phone:PhoneApplicationPage.Resources>
@@ -53,7 +54,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Height="auto" Grid.Row="0">
-                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" Loaded="ArticleContentWB_Loaded" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
+                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
                             <toolkit:GestureService.GestureListener>
                                 <toolkit:GestureListener x:Name="TackOverCrossSlip" Flick="TackOverCrossSlip_Flick" />
                             </toolkit:GestureService.GestureListener>
@@ -75,7 +76,7 @@
                                     </Grid.ColumnDefinitions>
                                     <Slider Name="FontSizeSlider" Width="450" 
                                             Grid.ColumnSpan="3" Grid.Row="0" 
-                                            Minimum="18" Maximum="40" 
+                                            Minimum="18" Maximum="30" 
                                             SmallChange="1" 
                                             Value="18"/>
                                     <TextBlock Name="tbFontSizeValue" Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" Margin="12,-50,0,0">

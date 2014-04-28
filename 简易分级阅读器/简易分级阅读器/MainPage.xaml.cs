@@ -12,6 +12,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 using System.IO;
+using System.Threading;
 
 namespace 简易分级阅读器
 {
@@ -23,16 +24,9 @@ namespace 简易分级阅读器
             InitializeComponent();
             //加载文章列表
             this.DataBind();
+            //异步加载单词等级表
+            this.loadLocalDatabase();
         }
-
-        //private void lbArticlesList_Tap(object sender, Microsoft.Phone.Controls.GestureEventArgs e)
-        //{
-        //    Article selectedItem = (Article)lbArticlesList.SelectedItem;
-        //    if (selectedItem != null)
-        //    {
-        //        NavigationService.Navigate(new Uri("/ArticleReaderPage.xaml?Title=" + selectedItem.Title, UriKind.Relative));
-        //    }
-        //}
 
         /// <summary>
         /// 加载文章列表
@@ -78,6 +72,12 @@ namespace 简易分级阅读器
                 NavigationService.Navigate(new Uri("/ArticleReaderPage.xaml?Title=" + strTitle, UriKind.Relative));
                 this.lbArticlesList.SelectedIndex = -1;
             }
+        }
+
+        private void loadLocalDatabase()
+        {
+            Thread threa = new Thread(new localDataBaseHelper().InitializeData);
+            threa.Start();
         }
     }
 }

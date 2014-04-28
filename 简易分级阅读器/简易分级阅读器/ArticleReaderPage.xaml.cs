@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Xml.Linq;
 using Newtonsoft.Json.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.Phone.Shell;
 
 namespace 简易分级阅读器
 {
@@ -27,6 +28,16 @@ namespace 简易分级阅读器
         {
             InitializeComponent();
             this.FontSizeSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(FontSizeSlider_ValueChanged);//FontSizeSlider_ValueChanged;
+            this.Loaded += new RoutedEventHandler(ArticleReaderPage_Loaded);
+        }
+
+        protected void ArticleReaderPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            ProgressIndicator pi = new ProgressIndicator();
+            pi.Text = "Loading...";
+            pi.IsIndeterminate = true;
+            pi.IsVisible = true;
+            SystemTray.SetProgressIndicator(this, pi);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -90,6 +101,7 @@ namespace 简易分级阅读器
         {
             StopFullScreenAction();
             this.WordLeavelDialopPopup.IsOpen = false;
+            this.ArticleContentWB.InvokeScript("clearHightLight");
             this.FontSizeDialogPopup.IsOpen = false;
             e.Cancel = true;
         }
@@ -129,6 +141,8 @@ namespace 简易分级阅读器
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
+            
+            SystemTray.IsVisible = false;
             //这样加载数据
             this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
            //也可以这样 this.ArticleContentWB.NavigateToString(template);
@@ -206,12 +220,12 @@ namespace 简易分级阅读器
 
         }
 
-        private void ArticleContentWB_Loaded(object sender, RoutedEventArgs e)
-        {
-            var border = this.ArticleContentWB.Descendants<Border>().Last() as Border;
-           // border.ManipulationDelta += Border_ManipulationDelta;
-           // border.ManipulationCompleted += Border_ManipulationCompleted;
-        }
+        //private void ArticleContentWB_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    var border = this.ArticleContentWB.Descendants<Border>().Last() as Border;
+        //   // border.ManipulationDelta += Border_ManipulationDelta;
+        //   // border.ManipulationCompleted += Border_ManipulationCompleted;
+        //}
         #endregion
 
         #region ApplicationBar Button Event
@@ -234,37 +248,30 @@ namespace 简易分级阅读器
         }
         #endregion
 
-        #region 阻止拖动
-        private void Border_ManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
-        {
-            if (e.FinalVelocities.ExpansionVelocity.X != 0.0 ||
-                e.FinalVelocities.ExpansionVelocity.Y != 0.0)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void Border_ManipulationDelta(object sender, ManipulationDeltaEventArgs e)
-        {
-            if (e.DeltaManipulation.Scale.X != 0.0 ||
-                e.DeltaManipulation.Scale.Y != 0.0)
-            {
-                e.Handled = true;
-            }
-            if (true)
-            {
-                if (e.DeltaManipulation.Translation.X != 0.0 ||
-                  e.DeltaManipulation.Translation.Y != 0.0)
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-        #endregion
 
         private void Levelslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            object levelValue = Math.Round(e.NewValue);
+            try
+            {
+                using (localDataBaseHelper db = new localDataBaseHelper())
+                {
+                    var result = from query in db.WordLevel
+                                 where query.Level <= Convert.ToInt32(levelValue)
+                                 select query.Word;
+                    var wordList = new List<string>();
+                    for (int i = 0; i < result.ToArray().Length; i++)
+                    {
+                        wordList.Add(result.ToArray()[i]+"|");
+                    }
 
+                    this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
+                }
+            }
+            catch (Exception se)
+            {
+                MessageBox.Show("Excute JavaScript Have Exception:" + se.Message);
+            }
         }
 
         private void FontSizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)

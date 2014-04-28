@@ -101,7 +101,6 @@ namespace 简易分级阅读器
         {
             StopFullScreenAction();
             this.WordLeavelDialopPopup.IsOpen = false;
-            this.ArticleContentWB.InvokeScript("clearHightLight");
             this.FontSizeDialogPopup.IsOpen = false;
             e.Cancel = true;
         }

@@ -28,9 +28,10 @@
 
         <!--ContentPanel - 在此处放置其他内容-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,10">
-            <ScrollViewer  Height="auto" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
-                <StackPanel>
-                    <ListBox Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center" SelectionChanged="lbArticlesList_SelectionChanged">
+           
+                <StackPanel Height="600">
+                <ScrollViewer  Height="auto" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                    <ListBox Height="580" Name="lbArticlesList" SelectionMode="Single" HorizontalContentAlignment="Center" SelectionChanged="lbArticlesList_SelectionChanged">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" Height="85">
@@ -40,8 +41,9 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
-                </StackPanel>
-            </ScrollViewer>  
+                </ScrollViewer>
+            </StackPanel>
+           
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

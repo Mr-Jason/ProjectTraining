@@ -7,28 +7,43 @@
     <link href="css/content.css" rel="stylesheet" />
     <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript">
+        var markLight=true;
+        
+        //改变字体大小
         function changeFontSize(sizeValue) {
             $("article").css("font-size", Math.round(sizeValue));
         }
-
+        
+        //高亮文章单词
         function highLightWord(words) {
-            var c = new RegExp("\\w+[^\\w+\\.]", "g");
-
-            var arrMactches = words.match(c);
-            for (var i = 0; i < arrMactches.length ; i++) {
-                var regExp = new RegExp(arrMactches[i].trim().replace(/[(|)]/g,""),'g');
-                $(".content").each(function () {
-                    var html = $(this).html();
-                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
-                    $('.content').html(newHtml);
+            
+            if(markLight){
+                var c = new RegExp("\\w+[^\\w+\\.]", "g");
+    
+                var arrMactches = words.match(c);
+                for (var i = 0; i < arrMactches.length ; i++) {
+                    var regExp = new RegExp(arrMactches[i].trim().replace(/[(|)]/g,""),'g');
+                    $(".content").each(function () {
+                        var html = $(this).html();
+                        var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
+                        $('.content').html(newHtml);
+                        markLight=false;
+                    });
+                }
+            }else{
+                    //清除高亮效果
+                    $("span[class='highlight']").each(function () {
+                    var text = document.createTextNode($(this).text());
+                    $(this).replaceWith($(text));
                 });
+                markLight = true;
             }
         }
-
+        
+        //添加去除空格方法
         String.prototype.trim = function () {
             return this.replace(/(^\s*)|(\s*$)/g, "");
         }
-
     </script>
 </head>
 <body>

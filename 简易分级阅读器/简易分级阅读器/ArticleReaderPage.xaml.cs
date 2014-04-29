@@ -28,17 +28,8 @@ namespace 简易分级阅读器
         {
             InitializeComponent();
             this.FontSizeSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(FontSizeSlider_ValueChanged);//FontSizeSlider_ValueChanged;
-            this.Loaded += new RoutedEventHandler(ArticleReaderPage_Loaded);
         }
 
-        protected void ArticleReaderPage_Loaded(object sender, RoutedEventArgs e)
-        {
-            ProgressIndicator pi = new ProgressIndicator();
-            pi.Text = "Loading...";
-            pi.IsIndeterminate = true;
-            pi.IsVisible = true;
-            SystemTray.SetProgressIndicator(this, pi);
-        }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -65,13 +56,9 @@ namespace 简易分级阅读器
             if (this.ApplicationBar.IsVisible == false)
                 return;
             this.ShowArticlePivot.Margin = new Thickness(0, -10, 0, 0);
-            //this.contentScrollView.Height = System.Windows.Application.Current.Host.Content.ActualHeight-300;
-            //this.tbArticleTitle.Margin = new Thickness(0, 12, 0, 12);
-            //this.ArticleContentWB.Height = System.Windows.Application.Current.Host.Content.ActualHeight - 250;
             TitleDispear.Begin();  
             this.ApplicationBar.IsVisible = false;
             this.ShowArticlePivot.IsLocked = true;
-            //this.LevelSliderPanel.Visibility = System.Windows.Visibility.Visible;
             this.BackKeyPress += OnFullScreenBackKeyPress;
         }
 
@@ -85,10 +72,7 @@ namespace 简易分级阅读器
             TitleAppear.Begin();  
             this.ApplicationBar.IsVisible = true;
             this.ShowArticlePivot.Margin = new Thickness(0);
-            //this.tbArticleTitle.Margin = new Thickness(0);
-            //this.contentScrollView.Height = System.Windows.Application.Current.Host.Content.ActualHeight - 350;
             this.ShowArticlePivot.IsLocked = false;
-            //this.LevelSliderPanel.Visibility = System.Windows.Visibility.Collapsed;
             this.BackKeyPress -= OnFullScreenBackKeyPress;
         }
 
@@ -141,7 +125,6 @@ namespace 简易分级阅读器
             template = template.Replace("{body}", content);//替换模板内容
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
             
-            SystemTray.IsVisible = false;
             //这样加载数据
             this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
            //也可以这样 this.ArticleContentWB.NavigateToString(template);

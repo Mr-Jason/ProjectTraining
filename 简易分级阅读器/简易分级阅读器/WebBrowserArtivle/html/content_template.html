@@ -34,7 +34,8 @@
                 clearHightLight();
             }
         }
-
+        
+        //根据单词等级高亮文中单词
         function highLightLevelWord(words) {
 
             clearHightLight();
@@ -42,10 +43,10 @@
             var arrMactches = words.split('|');
 
             for (var i = 0; i < arrMactches.length-1; i++) {
+                var regExp = new RegExp(arrMactches[i].trim(), 'g');
                 $(".content").each(function () {
-                    var regExp = new RegExp(arrMactches[i].trim(), 'g');
                     var html = $(this).html();
-                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i] + '</span>');//将找到的关键字替换，加上highlight属性；
+                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
                     $('.content').html(newHtml);
                 });
             }

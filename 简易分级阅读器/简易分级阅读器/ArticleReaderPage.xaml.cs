@@ -251,12 +251,12 @@ namespace 简易分级阅读器
                     }
                     
                     var pattern = string.Empty;
-    				for (int i = 0; i < wordList.Count; i++)
-    				{
-    					var value = wordList[i];
-    					pattern = @"\b" + value + @"\b";
-					    _articleContent = Regex.Replace(_articleContent, pattern, "<span class='HighLight'>" + value + "</span>", RegexOptions.IgnoreCase);
-    				}
+    	            for (int i = 0; i < wordList.Count; i++)
+    		    {
+    			var value = wordList[i];
+    			pattern = @"\b" + value + @"\b";
+			_articleContent = Regex.Replace(_articleContent, pattern, "<span class='highlight'>" + value + "</span>", RegexOptions.IgnoreCase);
+    		    }
     				
                    this.ArticleContentWB.NavigateToString(_articleContent);
                 }

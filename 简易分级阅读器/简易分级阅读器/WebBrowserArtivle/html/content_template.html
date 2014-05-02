@@ -7,6 +7,7 @@
     <link href="css/content.css" rel="stylesheet" />
     <script type="text/javascript" src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript">
+        //是否高亮的标志
         var markLight=true;
         
         //改变字体大小
@@ -35,23 +36,7 @@
             }
         }
         
-        //根据单词等级高亮文中单词
-        function highLightLevelWord(words) {
-
-            clearHightLight();
-
-            var arrMactches = words.split('|');
-
-            for (var i = 0; i < arrMactches.length-1; i++) {
-                var regExp = new RegExp(arrMactches[i].trim(), 'g');
-                $(".content").each(function () {
-                    var html = $(this).html();
-                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
-                    $('.content').html(newHtml);
-                });
-            }
-        }
-
+        //清除高亮效果
         function clearHightLight()
         {
             //清除高亮效果

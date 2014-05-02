@@ -23,6 +23,7 @@ namespace 简易分级阅读器
         private string _articleTitle;
         private XDocument _loadData;
         private Article _article;
+        private string _articleContent;
 
         public ArticleReaderPage()
         {
@@ -123,6 +124,7 @@ namespace 简易分级阅读器
             //从独立存储中读取模板文件
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
+            _articleContent = template;
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
             
             //这样加载数据
@@ -241,13 +243,22 @@ namespace 简易分级阅读器
                     var result = from query in db.WordLevel
                                  where query.Level <= Convert.ToInt32(levelValue)
                                  select query.Word;
+                                 
                     var wordList = new List<string>();
                     for (int i = 0; i < result.ToArray().Length; i++)
                     {
-                        wordList.Add(result.ToArray()[i]+"|");
+                        wordList.Add(result.ToArray()[i]);
                     }
-
-                    this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
+                    
+                    var pattern = string.Empty;
+    				for (int i = 0; i < wordList.Count; i++)
+    				{
+    					var value = wordList[i];
+    					pattern = @"\b" + value + @"\b";
+					    _articleContent = Regex.Replace(_articleContent, pattern, "<span class='HighLight'>" + value + "</span>", RegexOptions.IgnoreCase);
+    				}
+    				
+                   this.ArticleContentWB.NavigateToString(_articleContent);
                 }
             }
             catch (Exception se)

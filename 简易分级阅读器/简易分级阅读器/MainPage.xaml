@@ -43,7 +43,6 @@
                     </ListBox>
                 </ScrollViewer>
             </StackPanel>
-           
         </Grid>
     </Grid>
 </phone:PhoneApplicationPage>

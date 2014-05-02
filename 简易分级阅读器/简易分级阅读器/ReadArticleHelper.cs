@@ -15,6 +15,7 @@ namespace 简易分级阅读器
         public const string _htmlFilePath = "/Article/index.html";
         public const string _cssFilePath = "/Article/css/content.css";
         public const string _jsFilePath = "/Article/js/content.js";
+        public const string _jsJQFilePath = "/Article/js/jquery-1.11.0.js";
 
         /// <summary>
         /// 数据初始化方法
@@ -41,7 +42,7 @@ namespace 简易分级阅读器
             IsolatedStorageHelper.CopyContentToIsolatedStorage(_htmlCssFilePath, _cssFilePath);
            //将js文件写入独立存储中
             IsolatedStorageHelper.CopyContentToIsolatedStorage(_htmlJs_ContentFilePath, _jsFilePath);
-            IsolatedStorageHelper.CopyContentToIsolatedStorage(_htmlJs_JQFilePath, _jsFilePath);
+            IsolatedStorageHelper.CopyContentToIsolatedStorage(_htmlJs_JQFilePath, _jsJQFilePath);
         }
 
        public static XDocument getArticleResource()

@@ -30,11 +30,10 @@ namespace 简易分级阅读器
             this.FontSizeSlider.ValueChanged += new RoutedPropertyChangedEventHandler<double>(FontSizeSlider_ValueChanged);//FontSizeSlider_ValueChanged;
         }
 
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            _articleTitle = NavigationContext.QueryString["Title"];
+              _articleTitle = NavigationContext.QueryString["Title"];
             //加载文档
             _loadData = ReadArticleHelper.getArticleResource();
             var data = from query in _loadData.Descendants("Article")
@@ -45,7 +44,6 @@ namespace 简易分级阅读器
                            NewWord = (string)query.Element("NewWord")
                        };
             _article = (Article)data.ToList()[0];
-           
         }
 
         /// <summary>
@@ -117,14 +115,15 @@ namespace 简易分级阅读器
         /// </summary>
         private void readDataToTemplate()
         {
+              // 程序初始化处理    
             new ReadArticleHelper().initializationData();// initializationData();
             //从独立存储中读取资源文件
             string content = IsolatedStorageHelper.OpenFile(_articleTitle);
             //从独立存储中读取模板文件
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
+
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
-            
             //这样加载数据
             this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
            //也可以这样 this.ArticleContentWB.NavigateToString(template);
@@ -215,6 +214,15 @@ namespace 简易分级阅读器
         {
             try
             {
+                ApplicationBarIconButton btnLight = sender as ApplicationBarIconButton;
+                if (btnLight.IconUri.ToString().IndexOf("light") > 0)
+                {
+                    btnLight.IconUri = new Uri("Assets/images/appbar.dark.rest.png", UriKind.Relative);
+                }
+                else
+                {
+                    btnLight.IconUri = new Uri("Assets/images/appbar.light.rest.png", UriKind.Relative);
+                }
                 this.ArticleContentWB.InvokeScript("highLightWord", new string[]{this._article.NewWord});
             }
             catch (Exception se)
@@ -244,10 +252,10 @@ namespace 简易分级阅读器
                     var wordList = new List<string>();
                     for (int i = 0; i < result.ToArray().Length; i++)
                     {
-                        wordList.Add(result.ToArray()[i]+"|");
+                        wordList.Add(result.ToArray()[i] + "|");
                     }
 
-                    this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
+                   this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
                 }
             }
             catch (Exception se)
@@ -268,6 +276,19 @@ namespace 简易分级阅读器
             {
                 MessageBox.Show("Excute JavaScript Have Exception:" + se.Message);
             }
+        }
+
+        private void ArticleContentWB_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            string selectedWord = (string)this.ArticleContentWB.InvokeScript("eval", new string[]
+			{
+				"document.selection.createRange().text;"
+			});
+            if (!string.IsNullOrEmpty(selectedWord))
+            {
+
+            }
+
         }
     }
 }

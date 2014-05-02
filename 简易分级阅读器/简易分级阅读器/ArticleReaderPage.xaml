@@ -15,7 +15,7 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.Opacity="0.5"
-    shell:SystemTray.IsVisible="True">
+    shell:SystemTray.IsVisible="False">
 
     <phone:PhoneApplicationPage.Resources>
         <local:TruncationConverter x:Key="truncate"/>
@@ -54,7 +54,7 @@
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel Height="auto" Grid.Row="0">
-                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify">
+                        <phone:WebBrowser x:Name="ArticleContentWB" Height="600" Opacity="0" Background="Black" IsScriptEnabled="True" LoadCompleted="ArticleContentWB_LoadCompleted" ScriptNotify="ArticleContentWB_ScriptNotify" MouseLeftButtonUp="ArticleContentWB_MouseLeftButtonUp">
                             <toolkit:GestureService.GestureListener>
                                 <toolkit:GestureListener x:Name="TackOverCrossSlip" Flick="TackOverCrossSlip_Flick" />
                             </toolkit:GestureService.GestureListener>
@@ -108,7 +108,6 @@
                                     <Slider Name="Levelslider"  Width="450"
                                         Grid.ColumnSpan="3" Grid.Row="0"  
                                         Maximum="5" Minimum="0" 
-                                        SmallChange="1" 
                                         ValueChanged="Levelslider_ValueChanged"/>
                                     <TextBlock Name="tbLevelValue" Grid.Column="0" VerticalAlignment="Center" Grid.Row="1" Margin="12,-50,0,0">
                                         <TextBlock.Text>

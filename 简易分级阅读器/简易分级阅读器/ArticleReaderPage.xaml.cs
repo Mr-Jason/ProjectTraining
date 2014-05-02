@@ -23,6 +23,7 @@ namespace 简易分级阅读器
         private string _articleTitle;
         private XDocument _loadData;
         private Article _article;
+        private string _articleContent;
 
         public ArticleReaderPage()
         {
@@ -122,7 +123,11 @@ namespace 简易分级阅读器
             //从独立存储中读取模板文件
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
+<<<<<<< HEAD
 
+=======
+            _articleContent = template;
+>>>>>>> 9e0b29ce3f281fdb84c684209401c281f1a7dd49
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
             //这样加载数据
             this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
@@ -249,13 +254,29 @@ namespace 简易分级阅读器
                     var result = from query in db.WordLevel
                                  where query.Level <= Convert.ToInt32(levelValue)
                                  select query.Word;
+                                 
                     var wordList = new List<string>();
                     for (int i = 0; i < result.ToArray().Length; i++)
                     {
+<<<<<<< HEAD
                         wordList.Add(result.ToArray()[i] + "|");
                     }
 
                    this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
+=======
+                        wordList.Add(result.ToArray()[i]);
+                    }
+                    
+                    var pattern = string.Empty;
+    	            for (int i = 0; i < wordList.Count; i++)
+    		    {
+    			var value = wordList[i];
+    			pattern = @"\b" + value + @"\b";
+			_articleContent = Regex.Replace(_articleContent, pattern, "<span class='highlight'>" + value + "</span>", RegexOptions.IgnoreCase);
+    		    }
+    				
+                   this.ArticleContentWB.NavigateToString(_articleContent);
+>>>>>>> 9e0b29ce3f281fdb84c684209401c281f1a7dd49
                 }
             }
             catch (Exception se)

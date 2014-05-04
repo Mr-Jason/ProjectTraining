@@ -35,31 +35,10 @@
                 clearHightLight();
             }
         }
-        
-<<<<<<< HEAD
-        //根据单词等级高亮文中单词
-        function highLightLevelWord(words) {
 
-            //clearHightLight();
-
-            var arrMactches = words.split('|');
-
-            for (var i = 0; i < arrMactches.length-1; i++) {
-                var regExp = new RegExp(arrMactches[i].trim(), 'g');
-                $(".content").each(function () {
-                    var html = $(this).html();
-                    var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
-                    $('.content').html(newHtml);
-                });
-            }
-        }
-
-=======
         //清除高亮效果
->>>>>>> 9e0b29ce3f281fdb84c684209401c281f1a7dd49
         function clearHightLight()
         {
-            //清除高亮效果
             $("span[class='highlight']").each(function () {
                 var text = document.createTextNode($(this).text());
                 $(this).replaceWith($(text));

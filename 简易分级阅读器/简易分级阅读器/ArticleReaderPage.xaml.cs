@@ -41,10 +41,12 @@ namespace 简易分级阅读器
                        where (string)query.Element("Title") == _articleTitle
                        select new Article
                        {
+                           Content=(string)query.Element("Content"),
                            Translation = (string)query.Element("Translation"),
                            NewWord = (string)query.Element("NewWord")
                        };
             _article = (Article)data.ToList()[0];
+            _articleContent = _articleTitle + "<br />" + _article.Content;
         }
 
         /// <summary>
@@ -85,6 +87,9 @@ namespace 简易分级阅读器
             StopFullScreenAction();
             this.WordLeavelDialopPopup.IsOpen = false;
             this.FontSizeDialogPopup.IsOpen = false;
+            this.ArticleContentWB.InvokeScript("clearHightLight");
+            this.readDataToTemplate();
+            this.Levelslider.Value=0;
             e.Cancel = true;
         }
 
@@ -123,11 +128,7 @@ namespace 简易分级阅读器
             //从独立存储中读取模板文件
             string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
             template = template.Replace("{body}", content);//替换模板内容
-<<<<<<< HEAD
 
-=======
-            _articleContent = template;
->>>>>>> 9e0b29ce3f281fdb84c684209401c281f1a7dd49
             IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
             //这样加载数据
             this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
@@ -247,6 +248,7 @@ namespace 简易分级阅读器
         private void Levelslider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             object levelValue = Math.Round(e.NewValue);
+            this.ArticleContentWB.InvokeScript("clearHightLight");
             try
             {
                 using (localDataBaseHelper db = new localDataBaseHelper())
@@ -255,28 +257,19 @@ namespace 简易分级阅读器
                                  where query.Level <= Convert.ToInt32(levelValue)
                                  select query.Word;
                                  
-                    var wordList = new List<string>();
-                    for (int i = 0; i < result.ToArray().Length; i++)
-                    {
-<<<<<<< HEAD
-                        wordList.Add(result.ToArray()[i] + "|");
-                    }
-
-                   this.ArticleContentWB.InvokeScript("highLightLevelWord", wordList.ToArray());
-=======
-                        wordList.Add(result.ToArray()[i]);
-                    }
-                    
+                    List<string> wordList = result.ToList();
                     var pattern = string.Empty;
-    	            for (int i = 0; i < wordList.Count; i++)
-    		    {
-    			var value = wordList[i];
-    			pattern = @"\b" + value + @"\b";
-			_articleContent = Regex.Replace(_articleContent, pattern, "<span class='highlight'>" + value + "</span>", RegexOptions.IgnoreCase);
-    		    }
-    				
-                   this.ArticleContentWB.NavigateToString(_articleContent);
->>>>>>> 9e0b29ce3f281fdb84c684209401c281f1a7dd49
+                    for (int i = 0; i < wordList.Count; i++)
+                    {
+                        var value = wordList[i];
+                        pattern = @"\b" + value + @"\b";
+                        _articleContent = Regex.Replace(_articleContent, pattern, "<span class='highlight'>" + value + "</span>", RegexOptions.IgnoreCase);
+                    }
+                    IsolatedStorageHelper.CopyContentToIsolatedStorage(ReadArticleHelper._htmlTemplateFilePath, ReadArticleHelper._htmlFilePath);
+                    string template = IsolatedStorageHelper.OpenFile(ReadArticleHelper._htmlFilePath);//读取模板文件
+                    template = template.Replace("{body}", _articleContent);//替换模板内容
+                    IsolatedStorageHelper.SaveFile(ReadArticleHelper._htmlFilePath, template);
+                    this.ArticleContentWB.Navigate(new Uri(ReadArticleHelper._htmlFilePath, UriKind.Relative));
                 }
             }
             catch (Exception se)
@@ -301,15 +294,14 @@ namespace 简易分级阅读器
 
         private void ArticleContentWB_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
-            string selectedWord = (string)this.ArticleContentWB.InvokeScript("eval", new string[]
-			{
-				"document.selection.createRange().text;"
-			});
-            if (!string.IsNullOrEmpty(selectedWord))
-            {
+            //string selectedWord = (string)this.ArticleContentWB.InvokeScript("eval", new string[]
+            //{
+            //    "document.selection.createRange().text;"
+            //});
+            //if (!string.IsNullOrEmpty(selectedWord))
+            //{
 
-            }
-
+            //}
         }
     }
 }

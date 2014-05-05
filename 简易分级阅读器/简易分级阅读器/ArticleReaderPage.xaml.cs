@@ -46,7 +46,7 @@ namespace 简易分级阅读器
                            NewWord = (string)query.Element("NewWord")
                        };
             _article = (Article)data.ToList()[0];
-            _articleContent = _articleTitle + "<br />" + _article.Content;
+            _articleContent = "<div class='title'>" + _articleTitle + "</div>" + _article.Content;
         }
 
         /// <summary>
@@ -88,7 +88,11 @@ namespace 简易分级阅读器
             this.WordLeavelDialopPopup.IsOpen = false;
             this.FontSizeDialogPopup.IsOpen = false;
             this.ArticleContentWB.InvokeScript("clearHightLight");
-            this.readDataToTemplate();
+            ApplicationBarIconButton lightWordBtn = (ApplicationBarIconButton)this.ApplicationBar.Buttons[1];
+            if (lightWordBtn.IconUri.ToString().IndexOf("dark") > 0)
+            {
+                lightWordBtn.IconUri = new Uri("Assets/images/appbar.light.rest.png", UriKind.Relative);
+            }
             this.Levelslider.Value=0;
             e.Cancel = true;
         }

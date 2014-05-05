@@ -24,10 +24,10 @@
                 var arrMactches = words.match(c);
                 for (var i = 0; i < arrMactches.length ; i++) {
                     var regExp = new RegExp(arrMactches[i].trim().replace(/[(|)]/g,""),'g');
-                    $(".content").each(function () {
+                    $("article").each(function () {
                         var html = $(this).html();
                         var newHtml = html.replace(regExp, '<span class="highlight">' + arrMactches[i].trim() + '</span>');//将找到的关键字替换，加上highlight属性；
-                        $('.content').html(newHtml);
+                        $('article').html(newHtml);
                         markLight=false;
                     });
                 }
@@ -45,6 +45,8 @@
             });
             markLight = true;
         }
+
+
         
         //添加去除空格方法
         String.prototype.trim = function () {

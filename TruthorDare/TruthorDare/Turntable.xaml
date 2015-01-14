@@ -1,0 +1,163 @@
+﻿<UserControl
+    x:Class="TruthorDare.Turntable"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TruthorDare"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="400"
+    d:DesignWidth="400">
+
+    <UserControl.Resources>
+        <Storyboard x:Name="storyBoardturn" x:Key="zhuandong" RepeatBehavior="1x" Completed="storyBoardturn_Completed">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetName="path" Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[2].(RotateTransform.Angle)">
+                <SplineDoubleKeyFrame KeyTime="0" Value="0"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:2" Value="450.742" KeySpline="1,0,1,1"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:5" Value="4409.245"/>
+                <SplineDoubleKeyFrame KeyTime="0:0:7" Value="5040" KeySpline="0,0,0,1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Style x:Key="btnTurnStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <Grid>
+                            <Ellipse x:Name="ellipse" Stroke="Gold" StrokeThickness="5" Height="90" Width="90">
+                                <Ellipse.Fill>
+                                    <LinearGradientBrush>
+                                        <GradientStop Color="#FFB7E22D" Offset="0"/>
+                                        <GradientStop Color="#FF851616" Offset="1"/>
+                                    </LinearGradientBrush>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--转盘按钮样式-->
+    </UserControl.Resources>
+
+    <Grid Width="360" Height="360" x:Name="gdTurntable">
+        <!--转盘-->
+        <Path Data="M398.5,201 C398.5,310.07623 310.07623,398.5 201,398.5 C91.923767,398.5 3.5000076,310.07623 3.5000076,201 C3.5000076,91.923752 91.923767,3.4999962 201,3.4999962 C310.07623,3.4999962 398.5,91.923752 398.5,201 z M202.5,2.5 L202.5,399.5 M2.5,202.5 L399.5,202.5 M342.93097,62.219223 L61.182579,341.90985 M62.013805,59.270229 L342.11224,340.61316" Margin="-1" Stretch="Fill" StrokeThickness="5" UseLayoutRounding="False" RenderTransformOrigin="0.5,0.5" Stroke="White">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="21.444"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <LinearGradientBrush>
+                    <GradientStop Color="#FFC0A2A2" Offset="0"/>
+                    <GradientStop Color="#FF851616" Offset="1"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <!--转盘指针-->
+        <Path x:Name="path" Canvas.ZIndex="1000" Data="M200,24 L231.5,137 L201,201 L169,137 z" Margin="173.354,83.691,169.687,0" Stretch="Fill" Stroke="White" StrokeThickness="3" UseLayoutRounding="False" RenderTransformOrigin="0.493,1.002" Height="107.049" VerticalAlignment="Top">
+            <Path.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Path.RenderTransform>
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="Red" Offset="0"/>
+                    <GradientStop Color="#FFFFF500" Offset="1"/>
+                    <GradientStop Color="#FFFF5A00" Offset="0.272"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <Button x:Name="btnStartTurn" Canvas.ZIndex="1100" Foreground="White"  Content="Start" FontSize="20"  Style="{ThemeResource btnTurnStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnStartTurn_Click" />
+        <!--转盘边框-->
+        <Path Data="M200,19.999998 C100.58875,20 20,100.58875 19.999998,200 20,299.41125 100.58875,380 200,380 299.41125,380 380,299.41125 380,200 380,100.58875 299.41125,20 200,19.999998 z M200,0 C310.45694,0 400,89.543053 400,200 400,310.45694 310.45694,400 200,400 89.543053,400 0,310.45694 0,200 0,89.543053 89.543053,0 200,0 z" Stretch="Fill" Stroke="#99E6FF00" >
+            <Path.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="White" Offset="0.461"/>
+                    <GradientStop Color="#FF350000" Offset="0.993"/>
+                    <GradientStop Color="#FF450000"/>
+                </LinearGradientBrush>
+            </Path.Fill>
+        </Path>
+        <!--谢谢参与-->
+        <TextBlock Height="36" Margin="136,33,127,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="Orange">
+            <Run Language="zh-cn" Text="谢谢参与"/>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="0,170.354,7.291,164" TextWrapping="Wrap" Width="90.709" FontSize="21.333" RenderTransformOrigin="0.5,0.5" Foreground="Orange">
+            <TextBlock.RenderTransform>
+                <!--RenderTransformOrigin="0.5,0.5"-->
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <!--旋转角度-->
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform><Run Language="zh-cn" Text="谢谢参与"/>
+        </TextBlock>
+        <TextBlock Height="31.646" Margin="151,0,137,28" TextWrapping="Wrap" VerticalAlignment="Bottom"  FontSize="21.333" Foreground="Goldenrod">
+            <Run Language="zh-cn" Text="下一位"/> <!--RenderTransformOrigin="0.5,0.5"-->
+        </TextBlock>
+        <TextBlock  HorizontalAlignment="left" Margin="14.916,163.937,0,148.229" TextWrapping="Wrap" Width="80.709" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="Orange" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="90"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+                真心话
+            <LineBreak/>
+                大冒险
+        </TextBlock>
+        <TextBlock Height="32" Margin="0,77,59.291,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="LightGoldenrodYellow" HorizontalAlignment="Right" Width="67" Text="真心话" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="42.707"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="32" Margin="0,0,50.55,73.354" TextWrapping="Wrap" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="#FFB19047" HorizontalAlignment="Right" Width="73" Text="大冒险" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-38.82"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="32" Margin="50.295,0,0,55.128" TextWrapping="Wrap" VerticalAlignment="Bottom" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="#FFB19047" HorizontalAlignment="Left" Width="88.232" Text="真心话" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="49.994"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock Height="31.646" Margin="57.234,80.374,0,0" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" FontSize="21.333" Foreground="#FFB19047" HorizontalAlignment="Left" Width="68.98" Text="大冒险">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-50.426"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+    </Grid>
+</UserControl>

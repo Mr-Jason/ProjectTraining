@@ -1,0 +1,7 @@
+﻿<Application
+    x:Class="博客园登录.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:博客园登录">
+
+</Application>

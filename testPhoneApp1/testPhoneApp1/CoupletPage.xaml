@@ -1,0 +1,119 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="testPhoneApp1.CoupletPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:cod4="clr-namespace:Coding4Fun.Toolkit.Controls;assembly=Coding4Fun.Toolkit.Controls"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait"  Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <phone:PhoneApplicationPage.Resources>
+        <DataTemplate x:Key="GroupHeader">
+            <Border Background="{StaticResource PhoneAccentBrush}" Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}">
+                <TextBlock Text="{Binding Type}"/>
+            </Border>
+        </DataTemplate>
+        
+        <DataTemplate x:Key="GroupItem">
+            <Border Background="{StaticResource PhoneAccentBrush}" Margin="{StaticResource PhoneTouchTargetOverhang}" Padding="{StaticResource PhoneTouchTargetOverhang}">
+                <TextBlock Text="{Binding Type}" Style="{StaticResource PhoneTextLargeStyle}"/>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ListHeader">
+            <TextBlock Text="Header" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="ItemTmpl">
+            <StackPanel>
+                <TextBlock Text="{Binding Guangpi}"/>
+                <TextBlock Text="{Binding FirstLine}"/>
+                <TextBlock Text="{Binding SecondLine}"/>
+            </StackPanel>
+        </DataTemplate>
+
+        <DataTemplate x:Key="HappyElemDataTemplate">
+            <Grid Margin="12,12,12,19">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Image Source="{Binding ImagePath}" Height="100" Width="100" Grid.Column="0"/>
+                <cod4:RoundButton Grid.Column="1" ButtonWidth="75" VerticalAlignment="Center" HorizontalAlignment="Right" ButtonHeight="75" ImageSource="/Assets/Buttons/pin.png" Click="RoundButton_Click"/>
+            </Grid>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <!--枢轴控件-->
+        <phone:Pivot Title="手机也过年">
+            <!--枢轴项一-->
+            <phone:PivotItem Margin="0">
+                <phone:PivotItem.Header>
+                    <TextBlock Text="推荐对联" FontSize="56"/>
+                </phone:PivotItem.Header>
+                <Grid>
+                    <phone:LongListSelector x:Name="LongList"
+                                            ItemTemplate="{StaticResource ItemTmpl}"
+                                            ListHeaderTemplate="{StaticResource ListHeader}"
+                                            GroupHeaderTemplate="{StaticResource GroupHeader}">
+                        
+                    </phone:LongListSelector>
+                </Grid>
+            </phone:PivotItem>
+
+            <!--枢轴项二-->
+            <phone:PivotItem Margin="0">
+                <phone:PivotItem.Header>
+                    <TextBlock Text="私人定制" FontSize="56"/>
+                </phone:PivotItem.Header>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel>
+                        <TextBlock Text="横批" FontSize="24" Margin="19,0,18,0" VerticalAlignment="Center"/>
+                        <TextBox Margin="12,0,12,0" x:Name="tbHenpi"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <TextBlock Text="上联" FontSize="24" Margin="19,0,18,0" VerticalAlignment="Center"/>
+                        <TextBox Margin="12,0,12,0" x:Name="tbUp"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="上联" FontSize="24" Margin="19,0,18,0" VerticalAlignment="Center"/>
+                        <TextBox Margin="12,0,12,0" x:Name="tbDown"/>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3">
+                        <Button Content="创建" />
+                    </StackPanel>
+                </Grid>
+            </phone:PivotItem>
+            
+            <phone:PivotItem Margin="0">
+                <phone:PivotItem.Header>
+                    <TextBlock Text="喜庆春节元素" FontSize="56"/>
+                </phone:PivotItem.Header>
+                <Grid>
+                    <ListBox x:Name="lbHappyElements" ItemTemplate="{StaticResource HappyElemDataTemplate}">
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                    </ListBox>
+                </Grid>
+            </phone:PivotItem>
+        </phone:Pivot>
+    </Grid>
+</phone:PhoneApplicationPage>

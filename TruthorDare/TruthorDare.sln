@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TruthorDare", "TruthorDare\TruthorDare.csproj", "{22802D64-E7DB-4C3A-876E-CC095C0F55C6}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TruthorDare\\TruthorDare.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = TruthorDare\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|ARM.ActiveCfg = Debug|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|ARM.Build.0 = Debug|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|ARM.Deploy.0 = Debug|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|x86.ActiveCfg = Debug|x86
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|x86.Build.0 = Debug|x86
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Debug|x86.Deploy.0 = Debug|x86
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|ARM.ActiveCfg = Release|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|ARM.Build.0 = Release|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|ARM.Deploy.0 = Release|ARM
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|x86.ActiveCfg = Release|x86
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|x86.Build.0 = Release|x86
+		{22802D64-E7DB-4C3A-876E-CC095C0F55C6}.Release|x86.Deploy.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

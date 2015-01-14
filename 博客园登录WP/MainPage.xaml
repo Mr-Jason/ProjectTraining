@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="博客园登录.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:博客园登录"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+        <TextBlock Margin="10 20 0 10" Text="博客园登录测试" FontSize="40"/>
+        <TextBlock Height="40"/>
+        <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="用户名：" Height="30" Width="100" FontSize="25" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="UserName" Height="60" Width="250" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="60" Margin="0,15,0,15">
+            <TextBlock Text="密码：" Height="30" Width="100" FontSize="25" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="UserPassword" Height="60" Width="250" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Height="60">
+            <TextBlock Text="验证码：" Height="30" Width="100" FontSize="25" TextAlignment="Center" VerticalAlignment="Center"/>
+            <TextBox x:Name="CheckCode" Height="60" Width="150" />           
+        </StackPanel>
+        <Image x:Name="image" Source="{Binding img}" Height="50" Width="250"/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="获取验证码" Margin="68 0 30 0" Click="Button_Click_1"/>
+            <Button Content="登录" Click="Button_Click"/>
+        </StackPanel>
+        <Button HorizontalAlignment="Center" Content="获取短消息" Click="Button_Click_2"/>
+    </StackPanel>
+</Page>

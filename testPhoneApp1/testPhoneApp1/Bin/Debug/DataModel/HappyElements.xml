@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Elements>
+    <Element>
+       <imagePath>/Assets/duilianBackground/center.jpg</imagePath>
+    </Element>
+    <Element>
+        <imagePath>/Assets/duilianBackground/leftfooter.jpg</imagePath>
+    </Element>
+    <Element>
+      <imagePath>/Assets/duilianBackground/rightfooter.jpg</imagePath>
+    </Element>
+    <Element>
+      <imagePath>/Assets/duilianBackground/up.jpg</imagePath>
+    </Element>
+    <Element>
+      <imagePath>/Assets/duilianBackground/leftfooter.jpg</imagePath>
+    </Element>
+    <Element>
+      <imagePath>/Assets/duilianBackground/center.jpg</imagePath>
+    </Element>
+    <Element>
+      <imagePath>/Assets/duilianBackground/rightfooter.jpg</imagePath>
+    </Element>
+</Elements>

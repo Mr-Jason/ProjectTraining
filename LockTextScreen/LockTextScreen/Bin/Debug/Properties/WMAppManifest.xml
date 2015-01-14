@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
+  <DefaultLanguage xmlns="" code="zh-CN" />
+  <Languages xmlns="">
+    <Language code="zh-Hant" />
+    <Language code="zh-MO" />
+    <Language code="zh-TW" />
+    <Language code="zh-HK" />
+    <Language code="zh-CN" />
+  </Languages>
+  <App xmlns="" ProductID="{882d2fbd-a2d7-4bf4-ad16-3fb7379a6bd4}" Title="@AppResLib.dll,-100" RuntimeType="Silverlight" Version="2.0.1.0" Genre="apps.normal" Author="博客园 阿耒" Description="非常使用的锁屏记事工具，除了一般性文字记事，还可以在应用中开启倒计时提醒，这样在锁屏上显示文字的同时，倒计时也会同时显示。让你从此不在错过重要时刻~" Publisher="星爵" PublisherID="{5885dc1d-eb17-46c4-a832-88ebc9c11053}">
+    <IconPath IsRelative="true" IsResource="false">Assets\ApplicationIcon.png</IconPath>
+    <Capabilities>
+      <Capability Name="ID_CAP_WEBBROWSERCOMPONENT" />
+      <Capability Name="ID_CAP_IDENTITY_DEVICE" />
+      <Capability Name="ID_CAP_MEDIALIB_PHOTO" />
+      <Capability Name="ID_CAP_NETWORKING" />
+    </Capabilities>
+    <Tasks>
+      <DefaultTask Name="_default" NavigationPage="LockScreenPage.xaml" />
+      <ExtendedTask Name="BackgroundTask">
+        <BackgroundServiceAgent Specifier="ScheduledTaskAgent" Name="lockScreenTaskAgent" Source="lockScreenTaskAgent" Type="lockScreenTaskAgent.ScheduledAgent" />
+      </ExtendedTask>
+    </Tasks>
+    <Tokens>
+      <PrimaryToken TokenID="LockTextScreenToken" TaskName="_default">
+        <TemplateIconic>
+          <SmallImageURI IsRelative="true" IsResource="false">Assets\Tiles\iconic_smalliconimage.png</SmallImageURI>
+          <Count>0</Count>
+          <IconImageURI IsRelative="true" IsResource="false">Assets\Tiles\iconic_iconimage.png</IconImageURI>
+          <Title>@AppResLib.dll,-200</Title>
+          <Message></Message>
+          <BackgroundColor></BackgroundColor>
+          <HasLarge>false</HasLarge>
+          <LargeContent1></LargeContent1>
+          <LargeContent2></LargeContent2>
+          <LargeContent3></LargeContent3>
+          <DeviceLockImageURI IsRelative="true" IsResource="false"></DeviceLockImageURI>
+        </TemplateIconic>
+      </PrimaryToken>
+    </Tokens>
+    <Extensions>
+      <Extension ExtensionName="LockScreen_Notification_TextField" ConsumerID="{111DFF24-AA15-4A96-8006-2BFF8122084F}" TaskID="_default" />
+    </Extensions>
+    <ScreenResolutions>
+      <ScreenResolution Name="ID_RESOLUTION_WVGA" />
+      <ScreenResolution Name="ID_RESOLUTION_WXGA" />
+      <ScreenResolution Name="ID_RESOLUTION_HD720P" />
+    </ScreenResolutions>
+  </App>
+</Deployment>
+<!-- WPSDK Version 8.0.9900 -->

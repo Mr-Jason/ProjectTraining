@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>ALEI</Machine>
+    <WindowsUser>磊</WindowsUser>
+    <TargetPlatformIdentifier>WindowsPhoneApp</TargetPlatformIdentifier>
+    <SolutionConfiguration>Release|ARM</SolutionConfiguration>
+    <PackageArchitecture>arm</PackageArchitecture>
+    <PackageIdentityName>071a69a1-ae74-497c-9ab0-ca36de6c17a6</PackageIdentityName>
+    <IntermediateOutputPath>E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\obj\ARM\Release\</IntermediateOutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\TruthorDare.exe">
+      <PackagePath>TruthorDare.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\wpa81\Coding4Fun.Toolkit.Controls.dll">
+      <PackagePath>Coding4Fun.Toolkit.Controls.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\wpa81\Coding4Fun.Toolkit.dll">
+      <PackagePath>Coding4Fun.Toolkit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\Logo.scale-240.png">
+      <PackagePath>Assets\Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\SmallLogo.scale-240.png">
+      <PackagePath>Assets\SmallLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\SplashScreen.scale-240.png">
+      <PackagePath>Assets\SplashScreen.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\Square71x71Logo.scale-240.png">
+      <PackagePath>Assets\Square71x71Logo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\StoreLogo.scale-240.png">
+      <PackagePath>Assets\StoreLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\Assets\WideLogo.scale-240.png">
+      <PackagePath>Assets\WideLogo.scale-240.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\ReadMe.Coding4Fun.Toolkit.txt">
+      <PackagePath>ReadMe.Coding4Fun.Toolkit.txt</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\App.xbf">
+      <PackagePath>App.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\MainPage.xbf">
+      <PackagePath>MainPage.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\Turntable.xbf">
+      <PackagePath>Turntable.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\TruthorDare.xr.xml">
+      <PackagePath>TruthorDare.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\wpa81\Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls.xr.xml">
+      <PackagePath>Coding4Fun.Toolkit.Controls\Coding4Fun.Toolkit.Controls.xr.xml</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\packages\Coding4Fun.Toolkit.Controls.2.0.8\lib\wpa81\Coding4Fun.Toolkit.Controls\Themes\Generic.xbf">
+      <PackagePath>Coding4Fun.Toolkit.Controls\Themes\Generic.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="E:\GitHub\ProjectTraining\TruthorDare\TruthorDare\bin\ARM\Release\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+</Project>

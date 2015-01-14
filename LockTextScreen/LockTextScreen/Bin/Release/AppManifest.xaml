@@ -1,0 +1,15 @@
+﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="LockTextScreen" EntryPointType="LockTextScreen.App" RuntimeVersion="4.7.50308.0">
+  <Deployment.Parts>
+    <AssemblyPart x:Name="LockTextScreen" Source="LockTextScreen.dll" />
+    <AssemblyPart x:Name="Coding4Fun.Toolkit.Controls" Source="Coding4Fun.Toolkit.Controls.dll" />
+    <AssemblyPart x:Name="Coding4Fun.Toolkit" Source="Coding4Fun.Toolkit.dll" />
+    <AssemblyPart x:Name="lockScreenTaskAgent" Source="lockScreenTaskAgent.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="XAPADStatistics" Source="XAPADStatistics.dll" />
+    <AssemblyPart Source="zh-Hant/LockTextScreen.resources.dll" />
+    <AssemblyPart Source="zh-HK/LockTextScreen.resources.dll" />
+    <AssemblyPart Source="zh-MO/LockTextScreen.resources.dll" />
+    <AssemblyPart Source="zh-TW/LockTextScreen.resources.dll" />
+  </Deployment.Parts>
+</Deployment>

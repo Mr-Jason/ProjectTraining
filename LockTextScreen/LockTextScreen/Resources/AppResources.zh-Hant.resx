@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AllCancelMenuItem" xml:space="preserve">
+    <value>全部取消</value>
+  </data>
+  <data name="AllSelectMenuItem" xml:space="preserve">
+    <value>全部選中</value>
+  </data>
+  <data name="AppBaraiyingyong" xml:space="preserve">
+    <value>去愛應用我的應用討論區</value>
+  </data>
+  <data name="AppBarDeleteBtnText" xml:space="preserve">
+    <value>清除</value>
+  </data>
+  <data name="AppBarEvaluation" xml:space="preserve">
+    <value>評分&amp;評價</value>
+  </data>
+  <data name="AppBarFeedBack" xml:space="preserve">
+    <value>意見反饋</value>
+  </data>
+  <data name="AppBarOtherApp" xml:space="preserve">
+    <value>我的其他應用</value>
+  </data>
+  <data name="AppBarSettingBtnText" xml:space="preserve">
+    <value>查看設置</value>
+  </data>
+  <data name="AppBarSureBtnText" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>鎖屏倒計時記事</value>
+  </data>
+  <data name="CancelMenuItem" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="chooseDateTip" xml:space="preserve">
+    <value>親，請您重新選擇壹個將來的時間</value>
+  </data>
+  <data name="CopyMenuItem" xml:space="preserve">
+    <value>復制</value>
+  </data>
+  <data name="DeleteAllTip" xml:space="preserve">
+    <value>您確定要刪除全部鎖屏記事？</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="DeleteTip" xml:space="preserve">
+    <value>您確定要刪除？</value>
+  </data>
+  <data name="ErrorTip" xml:space="preserve">
+    <value>抱歉：程序鬧情緒了...是否反饋給作者,幫您修理它？</value>
+  </data>
+  <data name="ExitTip" xml:space="preserve">
+    <value>再按壹次退出</value>
+  </data>
+  <data name="FirstHelp" xml:space="preserve">
+    <value>1. 點擊[查看設置]按鈕，彈出頁面中點擊[通知]壹項的[選擇壹個應用以顯示詳細狀態]項選擇為[鎖屏倒計時記事]，點擊後退回到應用中</value>
+  </data>
+  <data name="FiveHelp" xml:space="preserve">
+    <value>5. 如果提示手機定期代理數量達到最大限制，請在手機的節電模式中將壹些應用的 [允許應用在後臺運行]選項設置為關閉</value>
+  </data>
+  <data name="FourHelp" xml:space="preserve">
+    <value>4. 如果提示無法開啟倒計時提醒，請在手機的節電模式中打開[允許應用在後臺運行]的選項</value>
+  </data>
+  <data name="HistoryCountTemplate" xml:space="preserve">
+    <value>{0}條歷史記錄</value>
+  </data>
+  <data name="HistoryEmptyTip" xml:space="preserve">
+    <value>沒有任何歷史記錄</value>
+  </data>
+  <data name="InputTip" xml:space="preserve">
+    <value>溫馨提示：請輸入鎖屏內容</value>
+  </data>
+  <data name="lockScreenShowContent" xml:space="preserve">
+    <value>鎖屏顯示內容</value>
+  </data>
+  <data name="LockTipTemplate" xml:space="preserve">
+    <value>距{0}還有{1}天</value>
+  </data>
+  <data name="MessageTitle" xml:space="preserve">
+    <value>溫馨提示</value>
+  </data>
+  <data name="NoLockContentTip" xml:space="preserve">
+    <value>溫馨提示：當前沒有要清除的鎖屏記事</value>
+  </data>
+  <data name="PinStartScreen" xml:space="preserve">
+    <value>釘選到開始畫面</value>
+  </data>
+  <data name="PivotHelpHistory" xml:space="preserve">
+    <value>歷史記錄</value>
+  </data>
+  <data name="PivotHelpItem" xml:space="preserve">
+    <value>使用幫助</value>
+  </data>
+  <data name="PivotIndexItem" xml:space="preserve">
+    <value>主頁</value>
+  </data>
+  <data name="RemoveSuccessTip" xml:space="preserve">
+    <value>溫馨提示：鎖屏記事清除成功</value>
+  </data>
+  <data name="RemoveTip" xml:space="preserve">
+    <value>您確定要刪除當前提醒，[{0}]</value>
+  </data>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>zh-Hant</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="SecondHelp" xml:space="preserve">
+    <value>2. 在輸入框輸入文字後點擊[確定]按鈕來設置鎖屏文字；如果想清除鎖屏文字，請點擊[清除]按鈕。</value>
+  </data>
+  <data name="SendFeedBack" xml:space="preserve">
+    <value>鎖屏倒計時記事[{0}] 用戶反饋</value>
+  </data>
+  <data name="SetSuccessTip" xml:space="preserve">
+    <value>溫馨提示：鎖屏記事設置成功</value>
+  </data>
+  <data name="SystemErrorOne" xml:space="preserve">
+    <value>非常抱歉，本應用的後臺計劃已被禁用，無法開啟倒計時提醒，請查看使用幫助。</value>
+  </data>
+  <data name="SystemErrorTwo" xml:space="preserve">
+    <value>非常抱歉，您的手機定期代理數量達到最大限制</value>
+  </data>
+  <data name="TbDate" xml:space="preserve">
+    <value>日期</value>
+  </data>
+  <data name="ThreeHelp" xml:space="preserve">
+    <value>3. 開啟倒計時鎖屏提醒，會在鎖屏上顯示天數倒數</value>
+  </data>
+  <data name="ToggleSwithRemind" xml:space="preserve">
+    <value>開啟倒計時鎖屏提醒</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>天</value>
+  </data>
+  <data name="SetDate" xml:space="preserve">
+    <value>未設日期</value>
+  </data>
+  <data name="StillDay" xml:space="preserve">
+    <value>還有</value>
+  </data>
+  <data name="FeedBackBody" xml:space="preserve">
+    <value>---------------------------------------
+Device Name：{0}
+Device Manufacturer：{1}
+Device Firmware Version：{2}
+Device Hardware Version：{3}
+---------------------------------------</value>
+  </data>
+</root>

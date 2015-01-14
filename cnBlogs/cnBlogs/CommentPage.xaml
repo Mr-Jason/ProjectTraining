@@ -1,0 +1,79 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="cnBlogs.CommentPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:UserControl="clr-namespace:cnBlogs;assembly=cnBlogs"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="False">
+    <phone:PhoneApplicationPage.Resources>
+        <Style x:Key="PageHeader" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Green"/>
+        </Style>
+        <Style x:Key="list" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+        <DataTemplate x:Key="CommentDataTemplate">
+            <Border BorderBrush="#AECC33" BorderThickness="0,0,0,1" Padding="0,0,0,5" Margin="5,0,5,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                        <TextBlock Text="{Binding Published}" Foreground="{Binding list}"/>
+                        <TextBlock Margin="5,0,5,0" Text="By" Foreground="{Binding list}"/>
+                        <TextBlock Margin="0,0,5,0" Text="{Binding Author.Name}" FontWeight="Bold" Foreground="{Binding list}"/>
+                    </StackPanel>
+                    <TextBlock Grid.Row="1" Text="{Binding Content}" TextWrapping="Wrap" Foreground="{Binding list}" />
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
+    <!--LayoutRoot 是包含所有页面内容的根网格-->
+    <Grid x:Name="LayoutRoot" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="12,17,0,18">
+            <TextBlock Text="博客园" Foreground="Black" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="评论列表" Foreground="Black" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+        <!--ContentPanel - 在此处放置其他内容-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,20,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <ListBox x:Name="lbComments" Grid.Row="1" Margin="0,10,0,0" ItemTemplate="{StaticResource CommentDataTemplate}">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+            
+            <Popup Name="AccountLoginPopup">
+                <UserControl:cnBlogsLogin Name="LoginCnBlogs" Width="456" DialogDismissed="cnBlogsLogin_DialogDismissed"/>
+            </Popup>
+            <Popup Name="SendCommentPopup">
+                <UserControl:SendComment Name="sendComment" DialogDismissed="SendComment_DialogDismissed" Width="456"/>
+            </Popup>
+            <ProgressBar IsIndeterminate="True" Name="progressbar"/>
+        </Grid>
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar x:Name="appbar">
+            <shell:ApplicationBarIconButton Text="刷新" x:Name="barRefreshIconBtn" IconUri="/Images/ApplicationBar/refresh.png" Click="barRefreshIconBtn_Click"/>
+            <shell:ApplicationBarIconButton x:Name="writeCommBarBtn" Text="写评论" IconUri="Images/ApplicationBar/write.png" Click="writeCommBarBtn_Click"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+</phone:PhoneApplicationPage>

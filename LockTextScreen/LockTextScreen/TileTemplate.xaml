@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="LockTextScreen.TileTemplate"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    d:DesignHeight="159" d:DesignWidth="159">
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="32"/>
+        </Grid.RowDefinitions>
+        <!--<StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Margin="0,0,0,10">-->
+            <TextBlock x:Name="tbLockContent" Text="锁屏记事显示内容动态生成的图片显示你知道吗根据文本的多少"  Margin="5,5,5,0" TextWrapping="Wrap"
+                 FontSize="21" FontFamily="Segoe WP Black"/>
+        <TextBlock x:Name="tbDate" Grid.Row="1" Text="日期：未设日期" FontSize="18"  VerticalAlignment="Center"  Margin=" 5,0,0,0" FontFamily="Segoe WP Black"/>
+       <!--</StackPanel>-->
+    </Grid>
+</UserControl>

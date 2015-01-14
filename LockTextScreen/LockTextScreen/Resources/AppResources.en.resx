@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ResourceFlowDirection" xml:space="preserve">
+    <value>LeftToRight</value>
+    <comment>Controls the FlowDirection for all elements in the RootFrame. Set to the traditional direction of this resource file's language</comment>
+  </data>
+  <data name="ResourceLanguage" xml:space="preserve">
+    <value>en</value>
+    <comment>Controls the Language and ensures that the font for all elements in the RootFrame aligns with the app's language. Set to the language code of this resource file's language.</comment>
+  </data>
+  <data name="ApplicationTitle" xml:space="preserve">
+    <value>Countdown lock screen notebook</value>
+  </data>
+  <data name="AllCancelMenuItem" xml:space="preserve">
+    <value>cancel all</value>
+  </data>
+  <data name="AllSelectMenuItem" xml:space="preserve">
+    <value>select all</value>
+  </data>
+  <data name="AppBaraiyingyong" xml:space="preserve">
+    <value>去爱应用我的应用讨论区</value>
+  </data>
+  <data name="AppBarDeleteBtnText" xml:space="preserve">
+    <value>clean</value>
+  </data>
+  <data name="AppBarEvaluation" xml:space="preserve">
+    <value>rate and review</value>
+  </data>
+  <data name="AppBarFeedBack" xml:space="preserve">
+    <value>feedback</value>
+  </data>
+  <data name="AppBarOtherApp" xml:space="preserve">
+    <value>my other applications</value>
+  </data>
+  <data name="AppBarSettingBtnText" xml:space="preserve">
+    <value>go Settings</value>
+  </data>
+  <data name="AppBarSureBtnText" xml:space="preserve">
+    <value>sure</value>
+  </data>
+  <data name="CancelMenuItem" xml:space="preserve">
+    <value>cancel</value>
+  </data>
+  <data name="chooseDateTip" xml:space="preserve">
+    <value>please re-select a future time</value>
+  </data>
+  <data name="CopyMenuItem" xml:space="preserve">
+    <value>copy</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>day</value>
+  </data>
+  <data name="DeleteAllTip" xml:space="preserve">
+    <value>Are you sure you want to delete all the lock screen notebook ?</value>
+  </data>
+  <data name="DeleteMenuItem" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="DeleteTip" xml:space="preserve">
+    <value>Are you sure you want to delete?</value>
+  </data>
+  <data name="ErrorTip" xml:space="preserve">
+    <value>sorry：Program moods... Whether feedback to the author, to help you repair it?</value>
+  </data>
+  <data name="ExitTip" xml:space="preserve">
+    <value>Press again to exit</value>
+  </data>
+  <data name="FirstHelp" xml:space="preserve">
+    <value>1.click [go Settings] button to see the pop-up page, click the [notifications] a [Choose an app to show detailed status] option for [Countdown lock screen notebook], click back to return to the application</value>
+  </data>
+  <data name="FiveHelp" xml:space="preserve">
+    <value>5.if tips to phone regularly agent number reached the maximum limit, please in battey saver mode phone some applications [allows app to run in the background] option is set to off</value>
+  </data>
+  <data name="FourHelp" xml:space="preserve">
+    <value>4.if the tips can not open the countdown reminder, please open the [allows  app to run in the background] in a battey saver mode options</value>
+  </data>
+  <data name="HistoryCountTemplate" xml:space="preserve">
+    <value>The {0} historical records</value>
+  </data>
+  <data name="HistoryEmptyTip" xml:space="preserve">
+    <value>No historical records</value>
+  </data>
+  <data name="InputTip" xml:space="preserve">
+    <value>Tips: Please enter the lock screen content</value>
+  </data>
+  <data name="lockScreenShowContent" xml:space="preserve">
+    <value>Lock screen display</value>
+  </data>
+  <data name="LockTipTemplate" xml:space="preserve">
+    <value>There are {1} away from the {0}</value>
+  </data>
+  <data name="MessageTitle" xml:space="preserve">
+    <value>Tips</value>
+  </data>
+  <data name="NoLockContentTip" xml:space="preserve">
+    <value>Tips：no need to remove the lock screen notes</value>
+  </data>
+  <data name="PinStartScreen" xml:space="preserve">
+    <value>pin to start</value>
+  </data>
+  <data name="PivotHelpHistory" xml:space="preserve">
+    <value>history</value>
+  </data>
+  <data name="PivotHelpItem" xml:space="preserve">
+    <value>help</value>
+  </data>
+  <data name="PivotIndexItem" xml:space="preserve">
+    <value>index</value>
+  </data>
+  <data name="RemoveSuccessTip" xml:space="preserve">
+    <value>Tips：Clear notebook lock screen success</value>
+  </data>
+  <data name="RemoveTip" xml:space="preserve">
+    <value>Are you sure you want to delete the current reminder，[{0}]</value>
+  </data>
+  <data name="SecondHelp" xml:space="preserve">
+    <value>2.in the input box to input text and click [sure] button to set the lock screen text; if you want to remove the lock screen text, click the [clear] button.</value>
+  </data>
+  <data name="SendFeedBack" xml:space="preserve">
+    <value>Lock screen countdown notes [V 2.0.0.0] Feedback</value>
+  </data>
+  <data name="SetSuccessTip" xml:space="preserve">
+    <value>Tips：Successfully set the lock screen notebook</value>
+  </data>
+  <data name="SystemErrorOne" xml:space="preserve">
+    <value>sorry，The background of this application program has been disabled , unable to open the countdown reminder , see Help.</value>
+  </data>
+  <data name="SystemErrorTwo" xml:space="preserve">
+    <value>sorry，Your phone number of agents reached the maximum limit on a regular basis</value>
+  </data>
+  <data name="TbDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="ThreeHelp" xml:space="preserve">
+    <value>3.Countdown to open the lock screen to remind , will show the number of days on the lock screen countdown</value>
+  </data>
+  <data name="ToggleSwithRemind" xml:space="preserve">
+    <value>The countdown to remind</value>
+  </data>
+  <data name="SetDate" xml:space="preserve">
+    <value>No set date</value>
+  </data>
+  <data name="StillDay" xml:space="preserve">
+    <value>also</value>
+  </data>
+</root>

@@ -1,0 +1,64 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockTextScreen", "LockTextScreen\LockTextScreen.csproj", "{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lockScreenTaskAgent", "lockScreenTaskAgent\lockScreenTaskAgent.csproj", "{7407BDBA-0743-4634-98FD-94241AB0A624}"
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = lockScreenTaskAgent\\lockScreenTaskAgent.csproj
+		SccLocalPath1 = .
+		SccProjectFilePathRelativizedFromConnection1 = lockScreenTaskAgent\\
+		SccProjectUniqueName2 = LockTextScreen\\LockTextScreen.csproj
+		SccLocalPath2 = .
+		SccProjectFilePathRelativizedFromConnection2 = LockTextScreen\\
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|ARM = Debug|ARM
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|ARM = Release|ARM
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|ARM.Build.0 = Debug|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|ARM.Deploy.0 = Debug|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|x86.ActiveCfg = Debug|x86
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|x86.Build.0 = Debug|x86
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Debug|x86.Deploy.0 = Debug|x86
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|ARM.ActiveCfg = Release|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|ARM.Build.0 = Release|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|ARM.Deploy.0 = Release|ARM
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|x86.ActiveCfg = Release|x86
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|x86.Build.0 = Release|x86
+		{882D2FBD-A2D7-4BF4-AD16-3FB7379A6BD4}.Release|x86.Deploy.0 = Release|x86
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|ARM.ActiveCfg = Debug|ARM
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|ARM.Build.0 = Debug|ARM
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|x86.ActiveCfg = Debug|x86
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Debug|x86.Build.0 = Debug|x86
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|ARM.ActiveCfg = Release|ARM
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|ARM.Build.0 = Release|ARM
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|x86.ActiveCfg = Release|x86
+		{7407BDBA-0743-4634-98FD-94241AB0A624}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
